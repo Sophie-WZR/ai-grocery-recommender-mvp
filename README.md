@@ -92,106 +92,6 @@ flowchart TD
 - Explanation generation for each recommendation
 - Interactive Streamlit demo
 
-## Repository Structure
-
-```text
-.
-├── GroceryDataset.csv
-├── app.py
-├── demo_script.py
-├── README.md
-└── grocery_agent
-    ├── __init__.py
-    ├── data_loader.py
-    ├── feature_engineering.py
-    ├── nlq_parser.py
-    ├── preprocess.py
-    └── recommender.py
-```
-
-## Modules
-
-### `grocery_agent/data_loader.py`
-
-- auto-detects the most likely grocery CSV
-- standardizes column names
-- returns a pandas DataFrame
-
-### `grocery_agent/preprocess.py`
-
-- cleans core text fields
-- parses prices like `"$14.99"` into floats
-- extracts ratings from strings like `"Rated 4.3 out of 5 stars"`
-- extracts numeric discount amounts
-- removes exact duplicates
-
-### `grocery_agent/feature_engineering.py`
-
-Creates lightweight structured features such as:
-
-- `category_normalized`
-- `text_blob`
-- `budget_flag`
-- `discount_flag`
-- `high_rating_flag`
-- `estimated_protein_level`
-- `estimated_sugar_level`
-- `meal_type_tags`
-- `health_score`
-
-These are transparent heuristics built from title, feature text, and description text because the dataset does not include full nutrition facts.
-
-### `grocery_agent/nlq_parser.py`
-
-Extracts signals such as:
-
-- budget / max price
-- rating intent
-- category and meal type
-- protein intent
-- sugar intent
-- healthy intent
-- discount intent
-- edible-only flag
-- fallback text terms
-
-### `grocery_agent/recommender.py`
-
-- applies safe filtering
-- handles edible-domain gating
-- performs simple scoring and ranking
-- supports fallback text matching
-- returns top results with short explanations
-
-### `demo_script.py`
-
-Runs a few representative queries end to end from the terminal.
-
-### `app.py`
-
-A Streamlit interface for interactive product demos.
-
-## Example Structured Query
-
-Input:
-
-```text
-high protein breakfast under 20 dollars
-```
-
-Output:
-
-```python
-{
-    "max_price": 20.0,
-    "subcategory": "breakfast",
-    "protein_level": "high",
-    "meal_type": "breakfast",
-    "edible_only": True,
-    "sort_by": "rating",
-}
-```
-
 ## Quick Start
 
 ### Requirements
@@ -218,29 +118,27 @@ python demo_script.py
 streamlit run app.py
 ```
 
-## Example Queries
+## Deploying The App
 
-Try these in the CLI demo or Streamlit app:
+The interactive app is a Streamlit application, so it should be deployed to a service that can run Python, such as Streamlit Community Cloud.
 
-- `cheap snacks`
-- `high protein breakfast`
-- `low sugar drinks under 10`
-- `healthy food`
-- `highly rated products with discounts`
+Recommended setup:
 
-## Design Principles
+1. Push this repository to GitHub
+2. Go to Streamlit Community Cloud
+3. Create a new app from this repo
+4. Set the entrypoint to:
 
-### 1. Clarity over cleverness
+```text
+app.py
+```
 
-The code is deliberately simple and easy to edit. The goal is prototype speed and explainability, not algorithmic sophistication.
+The included `requirements.txt` is enough for this project:
 
-### 2. Heuristics should be transparent
-
-The project does not pretend to have exact nutritional truth. Protein and sugar labels are estimated from keywords and should be presented honestly.
-
-### 3. Good demos handle bad input
-
-The parser and recommender include fallback handling for weakly parsed, ambiguous, and unsupported queries so the product feels more trustworthy.
+```text
+pandas
+streamlit
+```
 
 ## Limitations
 
@@ -252,27 +150,6 @@ This is an MVP, so there are important constraints:
 - there is no backend service, auth layer, or monitoring
 - there are no automated evals yet
 - the dataset itself is imperfect for true nutrition-aware recommendation
-
-## How To Position This Project
-
-Best framing:
-
-> an explainable AI recommendation prototype that converts natural-language shopping constraints into structured filtering and ranked results
-
-Avoid overstating it as:
-
-- a production-grade recommendation platform
-- a large-scale retrieval system
-- a nutrition-accurate dietary recommendation engine
-
-## Roadmap Ideas
-
-- add a stronger query planner
-- add evaluation cases and expected outputs
-- support embeddings or lexical retrieval improvements
-- expose the recommender through a small backend API
-- add richer explanation templates
-- add saved example scenarios and benchmark queries
 
 ## Dataset Notes
 
