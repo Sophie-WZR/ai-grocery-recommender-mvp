@@ -28,13 +28,9 @@ Under the hood, the app:
 
 ![Streamlit app screenshot](docs/images/app-home.png)
 
-_Add your main app screenshot at `docs/images/app-home.png`._
-
 ### Example Output
 
 ![Query example screenshot](docs/images/query-example.png)
-
-_Add a recommendation example screenshot at `docs/images/query-example.png`._
 
 ```text
 User query: Find high protein snacks with strong ratings
