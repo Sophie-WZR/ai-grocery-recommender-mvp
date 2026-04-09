@@ -32,13 +32,6 @@ Under the hood, the app:
 
 ![Query example screenshot](docs/images/query-example.png)
 
-```text
-User query: Find high protein snacks with strong ratings
-
-G2G 3-pack Peanut Butter & Jelly Protein Bars, 24-count
-Recommended because it has a strong rating, it is estimated as high protein from title and description keywords, and it fits your snack use case.
-```
-
 ## Why This Project Matters
 
 This project is a strong example of applied AI product engineering because it demonstrates:
@@ -295,9 +288,3 @@ The project expects a grocery-style CSV with columns similar to:
 - `Product Description`
 
 If the filename is unknown, the loader searches the current folder and selects the most likely CSV automatically.
-
-## Suggested Portfolio Summary
-
-If you want to reference this project on a resume or portfolio:
-
-> Built a modular Python MVP for an AI grocery recommendation assistant that translates natural-language shopping constraints into structured filters, heuristic product features, ranked results, and explanations via a Streamlit demo.
