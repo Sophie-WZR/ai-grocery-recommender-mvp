@@ -1,0 +1,27 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# IDE / editor
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local notebooks and checkpoints
+.ipynb_checkpoints/
+
+# Test / coverage artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
