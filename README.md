@@ -1,5 +1,7 @@
 # AI Grocery Recommender MVP
 
+[Live Demo](https://ai-grocery-recommender-mvp.streamlit.app/) | [GitHub Repo](https://github.com/Sophie-WZR/ai-grocery-recommender-mvp)
+
 An end-to-end applied AI prototype that turns natural-language shopping requests into structured filters, heuristic product features, ranked grocery recommendations, and short explanations.
 
 This project is designed for fast product iteration and portfolio demos. It is intentionally lightweight, readable, and modular. It is not a production recommendation system.
